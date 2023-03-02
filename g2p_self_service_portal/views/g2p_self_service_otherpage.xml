@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <!-- TODO: Remove all hardcoding -->
-    <template id="error_page" name="G2P Self Service My Profile">
+    <template id="other_page" name="G2P Self Service My Profile">
         <t t-call="g2p_self_service_portal.base">
-            <t t-set="title"> Error| Self Service Portal</t>
+            <t t-set="title"> Other| Self Service Portal</t>
             <div class="main-container">
-                <h5 class='all-title'>My Profile</h5>
-
-                <ol class="breadcrumb  breadcrumb-list bg-transparent">
-
-                    <br />
-                    <li class="breadcrumb-item">
-                        <a href="/selfservice">Home</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">My Profile</li>
-                </ol>
-
+                <h5 class='all-title'>Other</h5>
+                <div class="breadcrumbs">
+                    <a href="/selfservice">Home</a>
+                    <i class="fa fa-angle-right"></i>
+                    <a href="#" class="active">Other</a>
+                </div>
 
                 <div class="profile-container">
                     <img src="/g2p_self_service_portal/static/src/img/page_under_construction.png"/>

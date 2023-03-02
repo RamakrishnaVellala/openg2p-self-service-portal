@@ -59,13 +59,14 @@ class SelfServiceContorller(http.Controller):
     def self_service_contact_us(self, **kwargs):
         return request.render("g2p_self_service_portal.contact_us")
 
-    @http.route(["/selfservice/staticpage"], type="http", auth="public", website=True)
-    def self_service_static_page(self, **kwargs):
-        return request.render("g2p_self_service_portal.static_page")
+    @http.route(["/selfservice/otherpage"], type="http", auth="public", website=True)
+    def self_service_other_page(self, **kwargs):
+        return request.render("g2p_self_service_portal.other_page")
+    
+    @http.route(["/selfservice/help"], type="http", auth="public", website=True)
+    def self_service_help_page(self, **kwargs):
+        return request.render("g2p_self_service_portal.help_page")
 
-    @http.route(["/selfservice/errorpage"], type="http", auth="public", website=True)
-    def self_service_error_page(self, **kwargs):
-        return request.render("g2p_self_service_portal.error_page")
 
     @http.route(["/selfservice/home"], type="http", auth="user", website=True)
     def self_service_home(self, **kwargs):
@@ -157,12 +158,13 @@ class SelfServiceContorller(http.Controller):
         values = [received,pending]
         data = json.dumps({"labels": labels,
                 "values": values})
-
+        
         return request.render(
             "g2p_self_service_portal.dashboard",
             {
                 "programs": myprograms,
-                "data":data
+                "data":data,
+                "has_programs":len(myprograms)>0
 
             },
         )

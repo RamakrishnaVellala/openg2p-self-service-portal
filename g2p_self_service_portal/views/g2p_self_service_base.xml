@@ -8,11 +8,13 @@
         priority="900"
         primary="True"
     >
-   
+
         <xpath expr="//header" position="replace">
             <xpath expr="." position="inside">
                 <link rel="stylesheet" href="/g2p_self_service_portal/static/src/css/base.css" />
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <!-- <script type="text/javascript"
+                src="/g2p_self_service_portal/static/src/js/self_service_language_selector.js" /> -->
             </xpath>
             <header t-if="not no_header" id="top" data-anchor="true">
                 <div class="header-container">
@@ -43,22 +45,24 @@
                                     id="language-dropdown-button" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                     <img src="/g2p_self_service_portal/static/src/img/flag_en.png"
-                                        alt="English" class='flag' /> <span>English</span></button>
+                                        alt="English" class='flag' />
+                                    <span>English</span>
+                                </button>
                                 <div class="dropdown-menu"
                                     aria-labelledby="language-dropdown-button">
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="?lang=en">
                                         <img
                                             src="/g2p_self_service_portal/static/src/img/flag_en.png"
                                             alt="English" class='flag' />
                                         <span>English</span>
                                     </a>
-                                    <a class="dropdown-item" href="#" >
+                                    <a class="dropdown-item" href="?lang=zh_CN">
                                         <img
                                             src="/g2p_self_service_portal/static/src/img/flag_hk.png"
-                                            alt="中国人"  class='flag'/>
+                                            alt="中国人" class='flag' />
                                         <span>中国人</span>
                                     </a>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="?lang=fil_PH">
                                         <img
                                             src="/g2p_self_service_portal/static/src/img/flag_ph.png"
                                             alt="Filipino" class='flag' />
@@ -92,16 +96,14 @@
                                             >Menu Item</a>
                                         </li>
                                         <hr />
-                                        <li>
+                                        <li id="logout">
                                             <a
-                                                href="/selfservice/login"
+                                                href="/web/session/logout?redirect=/selfservice/login"
                                                 class="link"
                                             >Logout</a>
                                         </li>
 
                                     </ul>
-
-
                                 </div>
                             </div>
                         </div>
@@ -120,19 +122,17 @@
                         </a>
                         <ul class='list-container'>
                             <li class="nav-item">
-                                <a class="nav-link link" aria-current="page" href="/selfservice/aboutus">About Us</a>
+                                <a class="nav-link link" aria-current="page"
+                                    href="/selfservice/aboutus">About Us</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link link" href="/selfservice/contactus">Contact Us</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link link" href="/selfservice/staticpage">Static Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link link" href="errorpage">Error Page</a>
+                                <a class="nav-link link" href="/selfservice/otherpage">Others</a>
                             </li>
                         </ul>
-                       
+
                     </div>
                     <hr />
                     <div class='copyright'>

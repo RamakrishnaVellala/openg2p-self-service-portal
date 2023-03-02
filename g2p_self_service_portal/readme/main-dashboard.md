@@ -1,6 +1,6 @@
 # Self Service Portal - Main Dashboard
 
-## Target
+## Introduction
 
 - For logged user, He/She can access
   1. User registered programs
@@ -11,6 +11,7 @@
 
 - Html
 - Css
+- Javascript
 - Python
 - Odoo
 

@@ -6,16 +6,11 @@
             <t t-set="title"> My Profile| Self Service Portal</t>
             <div class="main-container">
                 <h5 class='all-title'>My Profile</h5>
-
-                <ol class="breadcrumb  breadcrumb-list bg-transparent">
-
-                    <br />
-                    <li class="breadcrumb-item">
-                        <a href="/selfservice">Home</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">My Profile</li>
-                </ol>
-
+                <div class="breadcrumbs">
+                    <a href="/selfservice">Home</a>
+                    <i class="fa fa-angle-right"></i>
+                    <a href="#" class="active">My Profile</a>
+                </div>
 
                 <div class="profile-container">
                     <img src="/g2p_self_service_portal/static/src/img/page_under_construction.png"/>

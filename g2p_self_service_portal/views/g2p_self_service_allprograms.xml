@@ -6,13 +6,11 @@
             <t t-set="title">All Programs | Self Service Portal</t>
             <div class="main-container">
                 <h5 class='all-title'>All Programs</h5>
-                <ol class="breadcrumb  breadcrumb-list bg-transparent">
-                    <li class="breadcrumb-item">
-                        <a href="/selfservice">Home</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">All Programs</li>
-                </ol>
-
+                <div class="breadcrumbs">
+                    <a href="/selfservice">Home</a>
+                    <i class="fa fa-angle-right"></i>
+                    <a href="#" class="active">All Programs</a>
+                </div>
                 <div class="table-container">
                     <div class="table-head-container">
                         <p class='table-title'>All Programs</p>
@@ -41,115 +39,117 @@
                             </div>
                         </form>
                     </div>
-                    <div class='tables-values-container'>
+                    <div class='tables-all-programs-container'>
                         <table id='allprograms'>
                             <thead>
                                 <tr>
                                     <th>No.</th>
                                     <th>Program Name <i class="fa fa-sort"></i></th>
-                                    <th>Status <i class="fa fa-sort"></i></th>
-                                    <th>Actions</th>
+                                    <th class="status">Status <i class="fa fa-sort"></i></th>
+                                    <th class="actions">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <t t-foreach="programs" t-as="program">
+                                    <t t-foreach="programs" t-as="program">
+                                        <tr>
+                                            <td>
+                                                <t t-esc="program['id']" />
+                                            </td>
+                                            <td>
+                                                <t t-if="program['is_latest']">
+                                                    <a href="/program/" class="program-name">
+                                                        <t t-esc="program['name']" />
+                                                        <button class="badge badge-button">
+                                                            <span>NEW</span>
+                                                        </button>
+                                                    </a>
+                                                </t>
 
-                                    <tr>
-                                        <td>
-                                            <t t-esc="program['id']" />
-                                        </td>
-                                        <td>
-                                            <t t-if="program['is_latest']">
-                                                <a href="/program/" class="program-name">
-                                                    <t t-esc="program['name']" />
-                                                    <button class="badge badge-button">
-                                                        <span>NEW</span>
-                                                    </button>
-                                                </a>
+                                                <t t-else="">
+                                                    <a href="/program/" class="program-name">
+                                                        <t t-esc="program['name']" />
+
+                                                    </a>
+
+                                                </t>
+
+                                            </td>
+
+                                            <t t-if="program['has_applied']">
+
+                                                <t t-if="program['status']=='Submitted'">
+                                                    <td class="status">
+                                                        <button string="Apply" type="object"
+                                                            class='submit-button'>
+                                                            <t t-esc="program['status']" />
+                                                        </button>
+                                                    </td>
+                                                    <td class="actions">
+                                                        <a
+                                                            href="#">
+                                                            <button string="View" type="object"
+                                                                class="view-button">
+                                                                View</button>
+                                                        </a>
+                                                    </td>
+                                                </t>
+                                                <t t-elif="program['status']=='Enrolled'">
+                                                    <td class="status">
+                                                        <button string="Apply" type="object"
+                                                            class='enroll-button'>
+                                                            <t t-esc="program['status']" />
+                                                        </button>
+                                                    </td>
+                                                    <td class="actions">
+                                                        <a
+                                                            href="#">
+                                                            <button string="View" type="object"
+                                                                class="view-button">
+                                                                View</button>
+                                                        </a>
+                                                    </td>
+                                                </t>
+
+
                                             </t>
+                                            <t t-else=''>
+                                                <td class="status">
 
-                                            <t t-else="">
-                                                <a href="/program/" class="program-name">
-                                                    <t t-esc="program['name']" />
-
-                                                </a>
-
-                                            </t>
-
-                                        </td>
-
-                                        <t t-if="program['has_applied']">
-
-                                            <t t-if="program['status']=='Submitted'">
-                                                <td>
                                                     <button string="Apply" type="object"
-                                                        class='submit-button'>
-                                                        <t t-esc="program['status']" />
-                                                    </button>
+                                                        class='notapplied-button'>
+                                                        Not Applied</button>
+
                                                 </td>
-                                                <td>
-                                                    <a t-attf-href="/selfservice/apply/{{program['id']}}">
-                                                        <button string="View" type="object"
-                                                            class="view-button">
-                                                            View</button>
+                                                <td class="actions">
+                                                    <t t-set="program_id" t-value="program['id']" />
+                                                    <a
+                                                        t-attf-href="/selfservice/apply?id={{program_id}}">
+                                                        <button string="Apply" type="object"
+                                                            class='apply-button'>
+                                                            Apply</button>
                                                     </a>
                                                 </td>
                                             </t>
-                                            <t t-elif="program['status']=='Enrolled'">
-                                                <td>
-                                                    <button string="Apply" type="object"
-                                                        class='enroll-button'>
-                                                        <t t-esc="program['status']" />
-                                                    </button>
-                                                </td>
-                                                <td>
-                                                    <a t-attf-href="/selfservice/apply/{{program['id']}}">
-                                                        <button string="View" type="object"
-                                                            class="view-button">
-                                                            View</button>
-                                                    </a>
-                                                </td>
-                                            </t>
-
-
-                                        </t>
-                                        <t t-else=''>
-                                            <td>
-
-                                                <button string="Apply" type="object"
-                                                    class='notapplied-button'>
-                                                    Not Applied</button>
-
-                                            </td>
-                                            <td>
-                                                <a t-attf-href="/selfservice/apply/{{program['id']}}">
-                                                    <button string="Apply" type="object"
-                                                        class='apply-button'>
-                                                        Apply</button>
-                                                </a>
-                                            </td>
-                                        </t>
-                                    </tr>
-                                </t>
+                                        </tr>
+                                    </t>
                             </tbody>
                         </table>
                     </div>
                     <ul class="pagination justify-content-center">
                         <t t-if="pager['sel'] &gt; 1">
                             <li class="pager-item">
-                                
-                                <a t-attf-href="/selfservice/programs?page={{pager['sel']-1}}" class="page-link">
+                                <a t-attf-href="/selfservice/programs?page={{pager['sel']-1}}"
+                                    class="page-link">
                                     <i class="fa fa-angle-left"></i>
                                 </a>
                             </li>
-                            
                         </t>
                         <t t-else="">
                             <a t-attf-href="#" class="page-link">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         </t>
-                       
+
                         <t t-foreach="range(1,pager['total']+1)" t-as="i">
                             <t t-if="i==pager['sel']">
                                 <li class="page-item active">
@@ -174,22 +174,23 @@
                         </t>
                         <t t-if="pager['sel'] &lt; pager['total']">
                             <li class="pager-item">
-                                
-                                <a t-attf-href="/selfservice/programs?page={{pager['sel']+1}}" class="page-link">
+                                <a t-attf-href="/selfservice/programs?page={{pager['sel']+1}}"
+                                    class="page-link">
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                             </li>
-                            
+
                         </t>
                         <t t-else="">
                             <a t-attf-href="#" class="page-link">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         </t>
-                       
+
                     </ul>
-              <script type="text/javascript" src="/g2p_self_service_portal/static/src/js/self-service_search_sort_all.js"/>
-            </div>
+                    <script type="text/javascript"
+                        src="/g2p_self_service_portal/static/src/js/self-service_search_sort_all.js" />
+                </div>
             </div>
 
         </t>
