@@ -66,7 +66,8 @@
                         </p>
 
                         <div id="otp-timer">
-                            <span>Time remaining <b>02:00</b></span>
+                            <span>Time remaining <b>02:00</b>
+                            </span>
                             <a
                                 style="float:right; pointer-events: none; color: #ADB5BD;"
                                 t-attf-href="/selfservice/signup/otp"
@@ -80,8 +81,9 @@
                         </div>
                     </form>
                 </div>
-                <div class="login-bottom-text"> Facing any challenges? <a href="#">Help</a> </div>
-            <script
+                <div class="login-bottom-text"> Facing any challenges? <a href="#">Help</a>
+                </div>
+                <script
                     type="text/javascript"
                     src="/g2p_self_service_portal/static/src/js/self_service_signup_authentication.js"
                 />

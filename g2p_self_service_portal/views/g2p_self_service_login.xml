@@ -115,7 +115,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="login-bottom-text"> Facing any challenges? <a href="#">Help</a> </div>
+                <div class="login-bottom-text"> Facing any challenges? <a href="#">Help</a>
+                </div>
             </div>
         </t>
     </template>

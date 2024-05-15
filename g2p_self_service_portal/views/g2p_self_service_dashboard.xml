@@ -14,9 +14,7 @@
                     <!-- <div class="alert" id="alertbox">
                         <div class="alertbox-adjuster">
                             <div class="alertbox-message">
-                                <span
-                                    class="welcome-title"
-                                >Welcome to the National Social Benefits Portal</span>
+                                <span class="welcome-title">Welcome to the National Social Benefits Portal</span>
                             </div>
                             <div class="alertbox-button">
                                 <span class="closebtn">
@@ -63,9 +61,12 @@
                                         <th>No.</th>
                                         <th>Program Name <i class="fa fa-sort" />
                                         </th>
-                                        <th>Application ID <i class="fa fa-sort" /></th>
-                                        <th>Program Status <i class="fa fa-sort" /></th>
-                                        <th>Application Status <i class="fa fa-sort" /></th>
+                                        <th>Application ID <i class="fa fa-sort" />
+                                        </th>
+                                        <th>Program Status <i class="fa fa-sort" />
+                                        </th>
+                                        <th>Application Status <i class="fa fa-sort" />
+                                        </th>
                                         <th>Submitted On <i class="fa fa-sort" />
                                         </th>
                                         <th class="right-align">Entitlement (in USD) <i class="fa fa-sort" />
@@ -85,20 +86,20 @@
                                             <td>
                                                 <t t-if="program['is_latest']">
                                                     <!-- <a href="#" class="program-name"> -->
-                                                        <button
+                                                    <button
                                                         class="badge badge-button"
                                                         disabled="1"
                                                         data-sort-ignore="true"
                                                     >
-                                                            <span>NEW</span>
-                                                        </button>
-                                                        <t t-out="program['name']" />
+                                                        <span>NEW</span>
+                                                    </button>
+                                                    <t t-out="program['name']" />
                                                     <!-- </a> -->
                                                 </t>
 
                                                 <t t-else="">
                                                     <!-- <a href="#" class="program-name"> -->
-                                                        <t t-out="program['name']" />
+                                                    <t t-out="program['name']" />
                                                     <!-- </a> -->
                                                 </t>
 
@@ -109,14 +110,14 @@
 
                                             <td>
                                                 <t t-if="program['program_status']=='Applied'">
-                                                        <button
+                                                    <button
                                                         string="Apply"
                                                         type="object"
                                                         class="submit-button"
                                                         disabled="1"
                                                     >
                                                         Applied
-                                                        </button>
+                                                    </button>
                                                 </t>
                                                 <t t-elif="program['program_status']=='Enrolled'">
                                                     <t
@@ -150,69 +151,69 @@
                                                         disabled="1"
                                                     >
                                                         Not Eligible
-                                                        </button>
+                                                    </button>
                                                 </t>
                                             </td>
                                             <td>
                                                 <t t-if="program['application_status']=='Applied'">
-                                                        <button
+                                                    <button
                                                         string="Apply"
                                                         type="object"
                                                         class="submit-button"
                                                         disabled="1"
                                                     >
                                                         Applied
-                                                        </button>
+                                                    </button>
                                                 </t>
                                                 <t t-elif="program['application_status']=='Not Eligible'">
-                                                        <button
+                                                    <button
                                                         string="Not Eligible"
                                                         type="object"
                                                         class="notapplied-button"
                                                         disabled="1"
                                                     >
                                                         Not Eligible
-                                                        </button>
+                                                    </button>
                                                 </t>
                                                 <t t-elif="program['application_status']=='Under Review'">
-                                                        <button
+                                                    <button
                                                         string="Under Review"
                                                         type="object"
                                                         class="submit-button"
                                                         disabled="1"
                                                     >
                                                         Under Review
-                                                        </button>
+                                                    </button>
                                                 </t>
                                                 <t t-elif="program['application_status']=='Completed'">
-                                                        <button
+                                                    <button
                                                         string="Completed"
                                                         type="object"
                                                         class="enroll-button"
                                                         disabled="1"
                                                     >
                                                         Completed
-                                                        </button>
+                                                    </button>
                                                 </t>
                                                 <t t-elif="program['application_status']=='Rejected'">
-                                                        <button
+                                                    <button
                                                         string="Rejected"
                                                         type="object"
                                                         class="notapplied-button"
                                                         disabled="1"
                                                     >
                                                         Rejected
-                                                        </button>
+                                                    </button>
                                                 </t>
                                                 <t t-elif="program['application_status']=='Closed'">
-                                                        <button
+                                                    <button
                                                         string="Closed"
                                                         type="object"
                                                         class="notapplied-button"
                                                         disabled="1"
                                                     >
                                                         Closed
-                                                        </button>
+                                                    </button>
                                                 </t>
                                             </td>
                                             <td>
@@ -233,8 +234,7 @@
 
                                 </t>
                                 <!-- <t>
-                                <tr><td colspan="7"> <div class="no-program-text"> <t t-out="len(myprograms)"
-                                /></div></td></tr></t> -->
+                                <tr><td colspan="7"> <div class="no-program-text"> <t t-out="len(myprograms)" /></div></td></tr></t> -->
                                 <t t-if="not programs">
                                     <tr>
                                         <td colspan="8" class="no-programs">
@@ -358,10 +358,7 @@
                                 type="text/javascript"
                                 src="/g2p_self_service_portal/static/src/js/self_service_pie_chart.js"
                             />
-                            <!-- <script
-                                type="text/javascript"
-                                src="/g2p_self_service_portal/static/src/js/self_service_welcome_alert.js"
-                            /> -->
+                            <!-- <script type="text/javascript" src="/g2p_self_service_portal/static/src/js/self_service_welcome_alert.js" /> -->
                         </div>
                     </div>
                 </div>

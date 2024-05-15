@@ -48,8 +48,10 @@
                                 <thead>
                                     <tr>
                                         <th>No.</th>
-                                        <th>Program Name <i class="fa fa-sort" /></th>
-                                        <th>Status <i class="fa fa-sort" /></th>
+                                        <th>Program Name <i class="fa fa-sort" />
+                                        </th>
+                                        <th>Status <i class="fa fa-sort" />
+                                        </th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -100,7 +102,9 @@
                                                             <h5
                                                                 class="modal-title"
                                                                 id="exampleModalLongTitle"
-                                                            ><t t-out="program['name']" /></h5>
+                                                            >
+                                                                <t t-out="program['name']" />
+                                                            </h5>
                                                             <button
                                                                 type="button"
                                                                 class="close"

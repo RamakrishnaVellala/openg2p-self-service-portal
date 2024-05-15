@@ -514,9 +514,7 @@ class SelfServiceController(http.Controller):
             .sorted("create_date", reverse=True)
         )
         if application_id:
-            program_reg_info = program_reg_info.sudo().search(
-                [("application_id", "=", application_id)]
-            )
+            program_reg_info = program_reg_info.sudo().search([("application_id", "=", application_id)])
 
         if len(program_reg_info) > 1:
             program_reg_info = program_reg_info[0]
