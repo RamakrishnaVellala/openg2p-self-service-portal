@@ -57,7 +57,6 @@ class SelfServiceController(http.Controller):
 
     @http.route(["/selfservice/signup"], type="http", auth="public", website=True)
     def self_service_signup(self, **kwargs):
-
         if request.session and request.session.uid:
             return request.redirect("/selfservice/home")
         request.session["signup_form_filled"] = True
@@ -66,7 +65,6 @@ class SelfServiceController(http.Controller):
             stored_otp = request.session["otp"]
 
             if stored_otp and int(kwargs["otp"]) and stored_otp == int(kwargs["otp"]):
-
                 request.session.pop("otp")
                 request.session.pop("signup_form_filled")
 
@@ -104,7 +102,6 @@ class SelfServiceController(http.Controller):
                     current_partner.write({"notification_preference": def_notif_pref})
 
                 if kwargs["vid"] and reg_id_type_id:
-
                     (
                         request.env["g2p.reg.id"]
                         .sudo()
@@ -145,7 +142,6 @@ class SelfServiceController(http.Controller):
         csrf=False,
     )
     def self_service_signup_otp(self, **kw):
-
         if not request.session.get("signup_form_filled"):
             return request.redirect("/selfservice")
 
@@ -390,6 +386,7 @@ class SelfServiceController(http.Controller):
                 {
                     "applied_on": detail.create_date.strftime("%d-%b-%Y"),
                     "application_id": detail.application_id,
+                    "program_id": program.id,
                     "status": detail.state
                     if detail.program_membership_id.state
                     not in ("duplicated", "not_eligible")
@@ -544,6 +541,7 @@ class SelfServiceController(http.Controller):
     )
     def self_service_form_details(self, _id, **kwargs):
         self.self_service_check_roles("REGISTRANT")
+        application_id = request.params.get("application_id", None)
 
         program = request.env["g2p.program"].sudo().browse(_id)
         current_partner = request.env.user.partner_id
@@ -559,6 +557,10 @@ class SelfServiceController(http.Controller):
             )
             .sorted("create_date", reverse=True)
         )
+        if application_id:
+            program_reg_info = program_reg_info.sudo().search(
+                [("application_id", "=", application_id)]
+            )
 
         if len(program_reg_info) > 1:
             program_reg_info = program_reg_info[0]
